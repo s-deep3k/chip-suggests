@@ -1,8 +1,12 @@
 
 import './App.css'
+import ChipAutoComplete from './components/ChipAutoComplete'
+import {suggestions} from '../suggestions'
 
 function App() {
-    return <></>
+    return <>
+    <ChipAutoComplete suggestions={suggestions.data}/>
+    </>
 }
 
 export default App
