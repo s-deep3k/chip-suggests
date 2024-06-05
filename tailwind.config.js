@@ -5,9 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors:{
-      metal:'EEEEEE'
-    },
+    // colors:{
+    //   metal:'EEEEEE'
+    // },
     extend: {},
   },
   plugins: [],

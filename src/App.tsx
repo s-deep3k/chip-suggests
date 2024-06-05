@@ -4,9 +4,10 @@ import ChipAutoComplete from './components/ChipAutoComplete'
 import {suggestions} from '../suggestions'
 
 function App() {
-    return <>
+    return <div className='bg-stone-200 
+    min-h-screen min-w-screen flex flex-col justify-center items-center'>
     <ChipAutoComplete suggestions={suggestions.data}/>
-    </>
+    </div>
 }
 
 export default App
