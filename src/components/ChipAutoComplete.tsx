@@ -1,16 +1,20 @@
 import { useState } from "react";
 import SearchInput from "./SearchInput"
 import SearchList from "./SearchList"
+import Chip from "./Chip";
 
 const ChipAutoComplete = ({suggestions}:{suggestions:string[]}) => {
-    //console.log(suggestions);
     const [suggest, changeSuggest] = useState('')
     const onInputChange = (val: string)=>{
         changeSuggest(val)
     }
   return (
     <>
-    <SearchInput onChange={onInputChange}/>
+        <div className="bg-stone-300 rounded-3xl p-2 border border-opacity-50 border-stone-400 
+    flex w-[40%] h-[55px] min-w-[400px] gap-x-1 items-center">
+        <Chip/>
+        <SearchInput onChange={onInputChange}/>
+        </div>
     <SearchList list={suggestions} suggestion={suggest}/>
     </>
   )
