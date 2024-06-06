@@ -1,22 +1,28 @@
-import { useState } from "react"
+import { useState, forwardRef, useImperativeHandle, useEffect} from "react"
 
-const Chip = ({setChip}:{setChip:string}) => {
+const Chip = forwardRef((props,ref) => {
   const [chips, setChips] = useState<string[]>(['React'])
   
   const noEmptyChip = ()=>{
     setChips(prev=>prev.filter(chip=>chip!==''))
   }
-  // if(setChip!=='')
-  //   {
-  //     setChips(prev=>prev.concat(setChip))
-  //     setChip=''
-  //     noEmptyChip()
-  //   }
+  useEffect(()=>{
+    noEmptyChip()
+  },[])
+  useImperativeHandle(ref,()=>{
+    return {
+      addChip,
+      removeChip
+    }
+  })
+  const addChip = (chip:string)=>{
+    if(chip!=='')
+      setChips(prevChips=>[...prevChips,chip])
+  }
   const removeChip = (chip:string)=>{
     setChips(prevChips=>
       prevChips.filter(prev=> prev!==chip)
     )
-    noEmptyChip()
   }
   return (
     <>
@@ -30,6 +36,6 @@ const Chip = ({setChip}:{setChip:string}) => {
     </div> */}
     </>
   )
-}
+})
 
 export default Chip
