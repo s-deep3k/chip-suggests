@@ -1,6 +1,8 @@
 
 const SearchList = ({list,onSelect}:{list: {suggestions:string[],select:string}, onSelect: (val:string)=>void}) => {
     const handleClick=(item: string)=>{
+      console.log(item);
+      
       onSelect(item)
     }
     const highlightSelect = (str:string, match?:string)=>{
@@ -14,7 +16,7 @@ const SearchList = ({list,onSelect}:{list: {suggestions:string[],select:string},
     }
     
   return (
-    <div className="max-h-[200px] mt-1 w-[400px] overflow-y-scroll bg-stone-50 rounded-lg shadow-md p-5">
+    list.select!=='' && <div className="max-h-[200px] mt-1 w-[400px] overflow-y-scroll bg-stone-50 rounded-lg shadow-md p-5">
         {list.suggestions.filter(item=>item.includes(list.select))
         .map((item,index)=>
         <div key={index} onClick={()=>handleClick(item)} 

@@ -1,7 +1,8 @@
 import { useState, forwardRef, useImperativeHandle, useEffect} from "react"
+import { RxCross2 } from "react-icons/rx"
 
-const Chip = forwardRef((props,ref) => {
-  const [chips, setChips] = useState<string[]>(['React'])
+const Chip = forwardRef((_,ref) => {
+  const [chips, setChips] = useState<string[]>([])
   
   const noEmptyChip = ()=>{
     setChips(prev=>prev.filter(chip=>chip!==''))
@@ -12,7 +13,8 @@ const Chip = forwardRef((props,ref) => {
   useImperativeHandle(ref,()=>{
     return {
       addChip,
-      removeChip
+      removeChip,
+      chips
     }
   })
   const addChip = (chip:string)=>{
@@ -26,16 +28,12 @@ const Chip = forwardRef((props,ref) => {
   }
   return (
     <>
-    {chips.length>0?chips.map((chip,index)=>(<div key={index} className="h-[90%] px-2 bg-slate-50 rounded-xl
-     flex flex-col justify-center shadow-md shadow-stone-400 hover:shadow-stone-500 cursor-pointer">
-       <span className="font-semibold">{chip} <span onClick={()=>removeChip(chip)} className="text-slate-400 hover:text-red-500 flex-initial">X</span></span> 
+    {chips.length>0?chips.map((chip,index)=>(<div key={index} className="min-h-[90%] max-w-screen-sm px-2 bg-slate-50 rounded-xl
+     inline-flex justify-center shadow-md shadow-stone-400 hover:shadow-stone-500 cursor-pointer">
+       <span className="font-semibold">{chip} <RxCross2 stroke="#ddddd" onClick={()=>removeChip(chip)} className="text-slate-400 hover:text-slate-600 flex-initial"></RxCross2></span> 
     </div>)):null}
-    {/* <div className="h-[90%] px-2 bg-slate-50 rounded-xl
-     flex flex-col justify-center shadow-md shadow-stone-400 hover:shadow-stone-500 cursor-pointer">
-       <span className="font-semibold">React <span className="text-slate-400 flex-initial">X</span></span> 
-    </div> */}
     </>
   )
 })
-
+//<span onClick={()=>removeChip(chip)} className="text-slate-400 hover:text-red-500 flex-initial">X</span>
 export default Chip
