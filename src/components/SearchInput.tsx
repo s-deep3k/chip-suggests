@@ -1,8 +1,4 @@
-
-
 const SearchInput = ({onChange}:{onChange: (val: string) => void}) => {
-    
-    
   return (
     <>
         <input

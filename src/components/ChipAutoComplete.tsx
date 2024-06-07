@@ -5,14 +5,14 @@ import Chip from "./Chip";
 
 const ChipAutoComplete = ({suggestions}:{suggestions:string[]}) => {
     const [input, changeInput] = useState<string>('')
-    //const [chip, setChip] = useState<string>('')
+    const [chips,setChips] = useState<string[]>([])
     const chipRef = useRef(null)
     const onInputChange = (val: string)=>{
         changeInput(val)
     }
     const onChipChange = (chip: string)=>{
-      //setChip(chip)
       chipRef.current!.addChip(chip)
+      setChips(chipRef.current!.getChips())
     }
   return (
     <>
@@ -21,7 +21,7 @@ const ChipAutoComplete = ({suggestions}:{suggestions:string[]}) => {
         <Chip ref={chipRef}/>
         <SearchInput onChange={onInputChange}/>
         </div>
-        <SearchList list={{suggestions,select:input,chips:chipRef.current!.chips}} onSelect={onChipChange}/>
+        <SearchList list={{suggestions,select:input,chips}} onSelect={onChipChange}/>
     </>
   )
 }
