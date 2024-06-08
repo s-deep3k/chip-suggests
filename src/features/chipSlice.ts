@@ -8,22 +8,22 @@ const chipSlice = createSlice({
     initialState,
     reducers:{
         addChip:(state,action)=>{
-            
             const chip = action.payload
             if(state.chips.filter(items=>items.includes(chip)).length>0){
                 alert("No Duplicate Chips can be added!")
                 return
                 }
                 chip!==''?state.chips=state.chips.concat(chip):null
-                console.log("Cholese addChip",state.chips);
                 },
         removeChip:(state,action)=>{
             state.chips=state.chips.filter(chip=>chip!==action.payload)
-            console.log("cholese removeChip",state.chips);
-            
+        },
+        backspaceRemoveChip:(state)=>{
+            if(state.chips.length>0)
+            removeChip(state.chips.pop())
         }
     }
 })
 
-export const {addChip,removeChip} = chipSlice.actions
+export const {addChip,removeChip,backspaceRemoveChip} = chipSlice.actions
 export const chipReducer = chipSlice.reducer

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../../store"
 import { addChip, } from "../../features/chipSlice"
 import { updateList } from "../../features/searchListSlice"
+import { motion } from "framer-motion"
 
 const ListSearch = ({ prompt, onClick }: { prompt: string, onClick: () => void }) => {
     const searchList = useSelector((state: RootState) => state.searchListReducer.searchList)
@@ -18,7 +19,10 @@ const ListSearch = ({ prompt, onClick }: { prompt: string, onClick: () => void }
 
     return (
         prompt !== '' && searchList.filter(item => item.includes(prompt)).length > 0 &&
-        <div className="max-h-[500px] mt-1 w-[400px] overflow-y-scroll bg-stone-100 rounded-lg shadow-md p-5">
+        <motion.div
+        initial={{scale:0.3,y:-100}}
+        animate={{scale:1, y:0}} 
+        className="max-h-[500px] mt-1 w-[400px] bg-stone-100 rounded-lg shadow-md p-5">
             {searchList
             .filter(item=>item.includes(prompt))
             .map((item,index)=> 
@@ -28,7 +32,7 @@ const ListSearch = ({ prompt, onClick }: { prompt: string, onClick: () => void }
             className="hover:bg-stone-200 rounded-lg transition ease-in-out"
             >{highlightSelect(item,prompt)}</div>)
             }
-        </div>    
+        </motion.div>    
     )
 }
 

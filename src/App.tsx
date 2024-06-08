@@ -6,7 +6,7 @@ import ChipAutoComplete2 from './components/v2/ChipAutoComplete2'
 
 function App() {
     return <div className='bg-stone-200 
-    min-h-screen min-w-screen container flex flex-col justify-center items-center'>
+    min-h-screen min-w-screen flex flex-col justify-center items-center'>
     {/* <ChipAutoComplete suggestions={suggestions.data}/> */}
     <ChipAutoComplete2/>
     </div>
