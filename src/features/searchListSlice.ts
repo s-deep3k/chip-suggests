@@ -8,12 +8,14 @@ const searchListSlice = createSlice({
     name:'searchList',
     initialState,
     reducers:{
-        updateList:(state,action)=>{
-            if(action.type==='CHIP ADDED'){
-                state.searchList = state.searchList.filter(item=>item!==action.payload.chip)
+        updateList:(state,action:{payload:{type:string,chip:string}})=>{
+            
+            const {type,chip}= action.payload
+            if(type==='CHIP ADDED'){
+                state.searchList = state.searchList.filter(item=>item!==chip)
             }
-            if(action.type==='CHIP REMOVED'){
-                state.searchList.concat(action.payload.chip)
+            if(type==='CHIP REMOVED'){
+                state.searchList= state.searchList.concat(chip)
             }
         }
     }
