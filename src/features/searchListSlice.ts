@@ -11,6 +11,8 @@ const searchListSlice = createSlice({
         updateList:(state,action:{payload:{type:string,chip:string}})=>{
             
             const {type,chip}= action.payload
+            console.log(type,chip);
+            
             if(type==='CHIP ADDED'){
                 state.searchList = state.searchList.filter(item=>item!==chip)
             }

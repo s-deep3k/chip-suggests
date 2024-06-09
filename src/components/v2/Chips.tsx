@@ -16,9 +16,9 @@ const Chips = ({onRemove}:{onRemove:()=>void}) => {
       animate={{scale:1}}
       exit={{scale:0.2}}
       key={index} 
-      className="min-h-[90%] px-2 bg-slate-50 rounded-xl
-      justify-center shadow-md shadow-stone-400 hover:shadow-stone-500 cursor-pointer">
-       <span className="font-semibold">{chip} <RxCross2 onClick={()=>{dispatch(removeChip(chip)); onRemove(); dispatch(updateList({type:"CHIP REMOVED",chip}))}} className="text-slate-400 hover:text-slate-600"></RxCross2></span>
+      className="min-h-[90%] px-2 py-1 bg-slate-50 rounded-xl flex shadow-md shadow-stone-400 hover:shadow-stone-500 cursor-pointer">
+       <span className="font-semibold">{chip}</span> 
+       <RxCross2 onClick={()=>{dispatch(removeChip(chip)); onRemove(); dispatch(updateList({type:"CHIP REMOVED",chip}))}} className="text-slate-400 hover:text-slate-600 mt-[0.35rem] ml-1"/>
     </motion.button>)):null}
     </>
   )

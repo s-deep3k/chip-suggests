@@ -13,15 +13,12 @@ const chipSlice = createSlice({
                 alert("No Duplicate Chips can be added!")
                 return
                 }
-                chip!==''?state.chips=state.chips.concat(chip):null
+                chip.trim()!==''?state.chips=state.chips.concat(chip):null
                 },
         removeChip:(state,action)=>{
             state.chips=state.chips.filter(chip=>chip!==action.payload)
         },
-        backspaceRemoveChip:(state)=>{
-            if(state.chips.length>0)
-            removeChip(state.chips.pop())
-        }
+        backspaceRemoveChip:(state)=>{if(state.chips.length>0)removeChip(state.chips.pop())}
     }
 })
 

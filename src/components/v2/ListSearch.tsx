@@ -12,6 +12,7 @@ const ListSearch = ({ prompt, onClick }: { prompt: string, onClick: () => void }
         if (!match!.trim())
             return <span>{str}</span>
         const parts = str.split(new RegExp(`(${match})`, 'gi'))
+        
         return <span>
             {parts.map((part, index) => part.toLowerCase() === match!.toLowerCase() ? <span key={index} className={`text-blue-500`}>{part}</span> : <span key={index}>{part}</span>)}
         </span>
